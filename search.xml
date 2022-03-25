@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>RSA Algorithm</title>
+      <link href="/2022/03/25/RSA-Algorithm-in-Python/"/>
+      <url>/2022/03/25/RSA-Algorithm-in-Python/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Step-1-生成大素数并对其进行素性检测"><a href="#Step-1-生成大素数并对其进行素性检测" class="headerlink" title="Step 1 生成大素数并对其进行素性检测"></a>Step 1 生成大素数并对其进行素性检测</h2><p>素性检测部分： Miller-Rabin算法</p><ol><li><a href="https://docs.sympy.org/latest/modules/ntheory.html#ntheory-functions-reference">Sympy-ntheory</a> 考虑其中isprime()函数的源码部分</li><li>手写Miller-Rabin <a href="https://cloud.tencent.com/developer/ask/sof/487225">参考</a></li><li><a href="https://oi-wiki.org/math/number-theory/prime/#miller-rabin">Miller-Rabin算法原理介绍</a></li></ol><h2 id="Step-2-生成公钥和私钥"><a href="#Step-2-生成公钥和私钥" class="headerlink" title="Step 2 生成公钥和私钥"></a>Step 2 生成公钥和私钥</h2><ol><li><a href="https://docs.sympy.org/latest/modules/crypto.html#sympy.crypto.crypto.rsa_public_key">Sympy-crypto</a><br>补充： <a href="https://blog.csdn.net/mrpre/article/details/79671263">多素数RSA-中国剩余定理</a></li></ol><h2 id="Step-3-加密和解密过程"><a href="#Step-3-加密和解密过程" class="headerlink" title="Step 3 加密和解密过程"></a>Step 3 加密和解密过程</h2>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Number Theory </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="/2022/03/25/hello-world/"/>
       <url>/2022/03/25/hello-world/</url>
