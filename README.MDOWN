@@ -8,8 +8,10 @@
 
 ## 待办
 
-绑定域名： 参考 https://blog.csdn.net/weixin_33763244/article/details/89484725?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_default&utm_relevant_index=2
+- 绑定域名： 参考 https://blog.csdn.net/weixin_33763244/article/details/89484725?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_default&utm_relevant_index=2
 
-
-添加pdf功能
+- 添加pdf功能
 https://github.com/theme-next/theme-next-pdf
+
+- 添加评论功能
+https://cloud.tencent.com/developer/article/1481858
