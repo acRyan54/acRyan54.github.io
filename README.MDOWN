@@ -1,6 +1,6 @@
 # acRyan54.github.io
 
-相关链接：
+## 相关链接
 > https://imgurl.org/ 免费图床
 > http://blog.haoji.me/build-blog-website-by-hexo-github.html?from=xa#bang-ding-yu-ming
 > https://zhuanlan.zhihu.com/p/26625249
@@ -8,13 +8,16 @@
 
 ## 待办
 
-- 绑定域名： 参考 https://blog.csdn.net/weixin_33763244/article/details/89484725?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_default&utm_relevant_index=2
+- 绑定域名
+参考 https://blog.csdn.net/weixin_33763244/article/details/89484725?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_default&utm_relevant_index=2
 
 - 添加pdf功能
 https://github.com/theme-next/theme-next-pdf
 
-- 添加评论功能
-https://cloud.tencent.com/developer/article/1481858
+- 图床-七牛云
+https://blog.csdn.net/weixin_44015043/article/details/105544499
+（在未备案国内域名前，先使用免费图床解决存储
+https://imgbb.com/
 
-- 绑定域名
-https://blog.csdn.net/m0_38064214/article/details/84544586
+- 图床-picgo
+https://picgo.github.io/PicGo-Doc/zh/guide/getting-started.html#%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B
