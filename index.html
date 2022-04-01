@@ -157,6 +157,158 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/29/NA-%E6%8F%92%E5%80%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s3.bmp.ovh/imgs/2021/10/8a3cd2a87eed9409.png">
+      <meta itemprop="name" content="Thansing Tsu">
+      <meta itemprop="description" content="Mathematics, SJTU">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Seb's">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/29/NA-%E6%8F%92%E5%80%BC/" class="post-title-link" itemprop="url">插值多项式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-29 15:34:47" itemprop="dateCreated datePublished" datetime="2022-03-29T15:34:47+08:00">2022-03-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-01 08:51:02" itemprop="dateModified" datetime="2022-04-01T08:51:02+08:00">2022-04-01</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="单项式插值"><a href="#单项式插值" class="headerlink" title="单项式插值"></a>单项式插值</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#单项式</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> sympy <span class="keyword">as</span> sp</span><br><span class="line"><span class="keyword">from</span> sympy.plotting <span class="keyword">import</span> plot</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">x = sp.symbols(<span class="string">'x'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Vandermondre</span>(<span class="params">n, X</span>):</span><br><span class="line">    Van = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        row = []</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            row.append(X[i]**j)</span><br><span class="line">        Van.append(row)</span><br><span class="line">    <span class="keyword">return</span> Van</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cal</span>(<span class="params">n, X, Y</span>):</span><br><span class="line">    A = np.array(Vandermondre(n, X))</span><br><span class="line">    Y = np.array(Y)</span><br><span class="line">    ans_arr = np.linalg.solve(A, Y)</span><br><span class="line">    ans = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i, ai <span class="keyword">in</span> <span class="built_in">enumerate</span>(ans_arr.tolist()):</span><br><span class="line">        ans = ans + ai * x**i</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    num = <span class="built_in">int</span>(<span class="built_in">eval</span>(<span class="built_in">input</span>()))</span><br><span class="line">    X, Y = [], []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num):</span><br><span class="line">        recv = re.split(<span class="string">r'[\s,]+'</span>, <span class="built_in">input</span>().strip())</span><br><span class="line">        X.append(<span class="built_in">eval</span>(recv[<span class="number">0</span>]))</span><br><span class="line">        Y.append(<span class="built_in">eval</span>(recv[<span class="number">1</span>]))</span><br><span class="line">    ans = cal(num, X, Y)</span><br><span class="line">    <span class="built_in">print</span>(ans)</span><br><span class="line">    plot(ans, (x, -<span class="number">10</span>, <span class="number">10</span>))</span><br></pre></td></tr></tbody></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/29/NA-%E6%8F%92%E5%80%BC/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/28/RSA-Algorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s3.bmp.ovh/imgs/2021/10/8a3cd2a87eed9409.png">
+      <meta itemprop="name" content="Thansing Tsu">
+      <meta itemprop="description" content="Mathematics, SJTU">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Seb's">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/28/RSA-Algorithm/" class="post-title-link" itemprop="url">RSA算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-28 23:17:32" itemprop="dateCreated datePublished" datetime="2022-03-28T23:17:32+08:00">2022-03-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-01 08:50:57" itemprop="dateModified" datetime="2022-04-01T08:50:57+08:00">2022-04-01</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前置内容"><a href="#前置内容" class="headerlink" title="前置内容"></a>前置内容</h2><p><a target="_blank" rel="noopener" href="http://www.metools.info/code/c70.html">古典密码学简单介绍&amp;在线生成器</a><br><a target="_blank" rel="noopener" href="http://www.metools.info/code/c80.html">在线生成RSA公私钥、在线加密解密</a><br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2013/06/rsa_algorithm_part_one.html">RSA算法原理1</a><br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2013/07/rsa_algorithm_part_two.html">RSA算法原理2</a></p>
+<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><p><strong>参考资料</strong></p>
+<blockquote>
+<p>openssl命令行生成RSA公私钥教程：<a target="_blank" rel="noopener" href="https://breezetemple.github.io/2019/11/05/openssl-rsa-key/">https://breezetemple.github.io/2019/11/05/openssl-rsa-key/</a><br>RSA算法的Java实现： <a target="_blank" rel="noopener" href="https://blog.csdn.net/neweastsun/article/details/101780730">https://blog.csdn.net/neweastsun/article/details/101780730</a>   （注：用到了Java的KeyPairGenerator类）<br>拓展：Java密码学教程： <a target="_blank" rel="noopener" href="https://www.yiibai.com/java_cryptography">https://www.yiibai.com/java_cryptography</a><br>RSA算法的Python实现： <a target="_blank" rel="noopener" href="https://github.com/kinnisoy/RSA">https://github.com/kinnisoy/RSA</a></p>
+</blockquote>
+<p><strong>课堂笔记</strong><br>[CS101_2022]计算机科学导论-22春-密码学部分</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://anl.sjtu.edu.cn/gao-xf/course/CS101_2022">https://anl.sjtu.edu.cn/gao-xf/course/CS101_2022</a></p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/28/RSA-Algorithm/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/27/Fermat-Toricelli-problem/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -339,158 +491,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/03/26/NA-%E6%B1%82%E6%A0%B9/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/26/NA-%E6%8F%92%E5%80%BC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://s3.bmp.ovh/imgs/2021/10/8a3cd2a87eed9409.png">
-      <meta itemprop="name" content="Thansing Tsu">
-      <meta itemprop="description" content="Mathematics, SJTU">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome to Seb's">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/26/NA-%E6%8F%92%E5%80%BC/" class="post-title-link" itemprop="url">插值多项式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-03-26 15:34:47" itemprop="dateCreated datePublished" datetime="2022-03-26T15:34:47+08:00">2022-03-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-01 07:58:36" itemprop="dateModified" datetime="2022-04-01T07:58:36+08:00">2022-04-01</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="单项式插值"><a href="#单项式插值" class="headerlink" title="单项式插值"></a>单项式插值</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#单项式</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> sympy <span class="keyword">as</span> sp</span><br><span class="line"><span class="keyword">from</span> sympy.plotting <span class="keyword">import</span> plot</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">x = sp.symbols(<span class="string">'x'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Vandermondre</span>(<span class="params">n, X</span>):</span><br><span class="line">    Van = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        row = []</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            row.append(X[i]**j)</span><br><span class="line">        Van.append(row)</span><br><span class="line">    <span class="keyword">return</span> Van</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cal</span>(<span class="params">n, X, Y</span>):</span><br><span class="line">    A = np.array(Vandermondre(n, X))</span><br><span class="line">    Y = np.array(Y)</span><br><span class="line">    ans_arr = np.linalg.solve(A, Y)</span><br><span class="line">    ans = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i, ai <span class="keyword">in</span> <span class="built_in">enumerate</span>(ans_arr.tolist()):</span><br><span class="line">        ans = ans + ai * x**i</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    num = <span class="built_in">int</span>(<span class="built_in">eval</span>(<span class="built_in">input</span>()))</span><br><span class="line">    X, Y = [], []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num):</span><br><span class="line">        recv = re.split(<span class="string">r'[\s,]+'</span>, <span class="built_in">input</span>().strip())</span><br><span class="line">        X.append(<span class="built_in">eval</span>(recv[<span class="number">0</span>]))</span><br><span class="line">        Y.append(<span class="built_in">eval</span>(recv[<span class="number">1</span>]))</span><br><span class="line">    ans = cal(num, X, Y)</span><br><span class="line">    <span class="built_in">print</span>(ans)</span><br><span class="line">    plot(ans, (x, -<span class="number">10</span>, <span class="number">10</span>))</span><br></pre></td></tr></tbody></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/03/26/NA-%E6%8F%92%E5%80%BC/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/25/RSA-Algorithm/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://s3.bmp.ovh/imgs/2021/10/8a3cd2a87eed9409.png">
-      <meta itemprop="name" content="Thansing Tsu">
-      <meta itemprop="description" content="Mathematics, SJTU">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome to Seb's">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/25/RSA-Algorithm/" class="post-title-link" itemprop="url">RSA算法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-03-25 23:17:32" itemprop="dateCreated datePublished" datetime="2022-03-25T23:17:32+08:00">2022-03-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-28 17:26:59" itemprop="dateModified" datetime="2022-03-28T17:26:59+08:00">2022-03-28</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前置内容"><a href="#前置内容" class="headerlink" title="前置内容"></a>前置内容</h2><p><a target="_blank" rel="noopener" href="http://www.metools.info/code/c70.html">古典密码学简单介绍&amp;在线生成器</a><br><a target="_blank" rel="noopener" href="http://www.metools.info/code/c80.html">在线生成RSA公私钥、在线加密解密</a><br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2013/06/rsa_algorithm_part_one.html">RSA算法原理1</a><br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2013/07/rsa_algorithm_part_two.html">RSA算法原理2</a></p>
-<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><p><strong>参考资料</strong></p>
-<blockquote>
-<p>openssl命令行生成RSA公私钥教程：<a target="_blank" rel="noopener" href="https://breezetemple.github.io/2019/11/05/openssl-rsa-key/">https://breezetemple.github.io/2019/11/05/openssl-rsa-key/</a><br>RSA算法的Java实现： <a target="_blank" rel="noopener" href="https://blog.csdn.net/neweastsun/article/details/101780730">https://blog.csdn.net/neweastsun/article/details/101780730</a>   （注：用到了Java的KeyPairGenerator类）<br>拓展：Java密码学教程： <a target="_blank" rel="noopener" href="https://www.yiibai.com/java_cryptography">https://www.yiibai.com/java_cryptography</a><br>RSA算法的Python实现： <a target="_blank" rel="noopener" href="https://github.com/kinnisoy/RSA">https://github.com/kinnisoy/RSA</a></p>
-</blockquote>
-<p><strong>课堂笔记</strong><br>[CS101_2022]计算机科学导论-22春-密码学部分</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://anl.sjtu.edu.cn/gao-xf/course/CS101_2022">https://anl.sjtu.edu.cn/gao-xf/course/CS101_2022</a></p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/03/25/RSA-Algorithm/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
